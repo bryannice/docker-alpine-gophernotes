@@ -29,8 +29,7 @@ GIT_VERSION_LONG := $(shell git describe --always --tags --long --dirty)
 # Docker Variables
 # -----------------------------------------------------------------------------
 
-STEP_1_IMAGE ?= golang:1.14.1-alpine3.11
-STEP_2_IMAGE ?= alpine:3.11
+STEP_1_IMAGE ?= alpine:3.13
 DOCKER_IMAGE_PACKAGE := $(GIT_REPOSITORY_NAME)-package:$(GIT_VERSION)
 DOCKER_IMAGE_TAG ?= $(GIT_REPOSITORY_NAME):$(GIT_VERSION)
 DOCKER_IMAGE_NAME := $(GIT_REPOSITORY_NAME)
@@ -44,7 +43,6 @@ DOCKER_IMAGE_NAME := $(GIT_REPOSITORY_NAME)
 # -----------------------------------------------------------------------------
 # Docker-based builds
 # -----------------------------------------------------------------------------
-
 .PHONY: docker-build
 docker-build: docker-rmi-for-build
 	@echo "$(BOLD)$(YELLOW)Building docker image.$(RESET)"
@@ -85,4 +83,3 @@ docker-rmi-for-build-development-cache:
 .PHONY: docker-rmi-for-package
 docker-rmi-for-packagae:
 	-docker rmi --force $(DOCKER_IMAGE_PACKAGE)
-
