@@ -56,4 +56,4 @@ RUN mkdir -p /go/src/github.com/gopherdata \
 ENV GOPATH /go
 
 EXPOSE 8888
-CMD [ "jupyter", "notebook", "--no-browser", "--allow-root", "--ip=0.0.0.0" ]
+CMD [ "jupyter", "notebook", "--no-browser", "--allow-root", "--ip=0.0.0.0", "--NotebookApp.token=''"]
